@@ -17,33 +17,32 @@ const ProfileEditForm = ({ profileData, onSave }) => {
       address,
     };
 
-
     onSave(updatedProfile);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow p-4">
+    <form onSubmit={handleSubmit} className="p-4 bg-white rounded-lg shadow">
       <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
+        <label className="block mb-2 font-bold text-gray-700" htmlFor="name">
           Name
         </label>
         <input
           type="text"
           id="name"
-          className="border rounded-lg py-2 px-3 w-full"
+          className="w-full px-3 py-2 bg-white border rounded-lg"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
+        <label className="block mb-2 font-bold text-gray-700" htmlFor="email">
           Email
         </label>
         <input
           type="email"
           id="email"
-          className="border rounded-lg py-2 px-3 w-full"
+          className="w-full px-3 py-2 bg-white border rounded-lg"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -51,27 +50,27 @@ const ProfileEditForm = ({ profileData, onSave }) => {
       </div>
       <div className="mb-4">
         <label
-          className="block text-gray-700 font-bold mb-2"
+          className="block mb-2 font-bold text-gray-700"
           htmlFor="university">
           University
         </label>
         <input
           type="text"
           id="university"
-          className="border rounded-lg py-2 px-3 w-full"
+          className="w-full px-3 py-2 bg-white border rounded-lg"
           value={university}
           onChange={(e) => setUniversity(e.target.value)}
           required
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="address">
+        <label className="block mb-2 font-bold text-gray-700" htmlFor="address">
           Address
         </label>
         <input
           type="text"
           id="address"
-          className="border rounded-lg py-2 px-3 w-full"
+          className="w-full px-3 py-2 bg-white border rounded-lg"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           required
@@ -79,7 +78,7 @@ const ProfileEditForm = ({ profileData, onSave }) => {
       </div>
       <button
         type="submit"
-        className="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+        className="px-4 py-2 font-bold text-white bg-teal-600 rounded">
         Save
       </button>
     </form>

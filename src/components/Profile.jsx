@@ -1,50 +1,48 @@
-
 import React, { useContext, useEffect, useState } from "react";
 import ProfileEditForm from "../components/ProfileEditForm";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Profile = () => {
   const [editing, setEditing] = useState(false);
-  const {user} = useContext(AuthContext);
-  const [userDetails, setUserDetails] = useState([])
+  const { user } = useContext(AuthContext);
+  const [userDetails, setUserDetails] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/mycollege/${user.email}`, {
-      method: "GET",
-    })
+    fetch(
+      `https://college-services-server-ashy.vercel.app/mycollege/${user.email}`,
+      {
+        method: "GET",
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         // Handle the response from the server after form submission if needed
         console.log("Form submitted successfully:", data);
-        setUserDetails(data)
+        setUserDetails(data);
       })
       .catch((error) => {
         // Handle any errors that occurred during form submission
         console.error("Error submitting form:", error);
       });
-  })
+  });
 
-
-
-    
-  
- const [userProfileData, setUserProfileData] = useState({
-   name: user?.name,
-   email: user?.email,
-   university: "ABC University",
-   address: "123 Main Street, City, Country",
- });
+  const [userProfileData, setUserProfileData] = useState({
+    name: user?.name,
+    email: user?.email,
+    university: "ABC University",
+    address: "123 Main Street, City, Country",
+  });
 
   const handleSaveProfile = (updatedProfile) => {
     // Implement API call to update the user profile data on the server
-    // For simplicity, we'll just update the local state here
+
     setUserProfileData(updatedProfile);
     setEditing(false);
   };
 
   return (
     <div className="container mx-auto mt-8">
-      <div className="bg-white rounded-lg shadow p-4">
+      <div className="p-4 bg-white rounded-lg shadow">
         {editing ? (
           // Show edit form when editing is true
           <ProfileEditForm
@@ -52,7 +50,6 @@ const Profile = () => {
             onSave={handleSaveProfile}
           />
         ) : (
-          // Show profile details when editing is false
           <>
             <div className="mb-4">
               <h2 className="text-xl font-bold">Profile Name</h2>
@@ -72,7 +69,7 @@ const Profile = () => {
             </div>
             <button
               onClick={() => setEditing(true)}
-              className="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+              className="px-4 py-2 text-white bg-teal-500 rounded afont-bold">
               Edit
             </button>
           </>
@@ -83,4 +80,3 @@ const Profile = () => {
 };
 
 export default Profile;
-

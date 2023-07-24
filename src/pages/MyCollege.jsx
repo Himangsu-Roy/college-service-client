@@ -3,56 +3,52 @@ import ReviewForm from "../components/ReviewForm"; // Make sure to import the Re
 import { AuthContext } from "../providers/AuthProvider";
 
 const MyCollege = () => {
-    const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   // State to keep track of reviews for each college
   const [collegeReviews, setCollegeReviews] = useState({});
 
   // Function to add a new review for a specific college
-//   const addReview = (collegeId, review) => {
-//     setCollegeReviews({
-//       ...collegeReviews,
-//       [collegeId]: [...(collegeReviews[collegeId] || []), review],
-//     });
-//   };
+  //   const addReview = (collegeId, review) => {
+  //     setCollegeReviews({
+  //       ...collegeReviews,
+  //       [collegeId]: [...(collegeReviews[collegeId] || []), review],
+  //     });
+  //   };
 
+  const addReview = (rating, comment) => {
+    //   setCollegeReviews({
+    //     ...collegeReviews,
+    //     [collegeId]: [...(collegeReviews[collegeId] || []), review],
+    //   });
 
+    setColleges([{ ...colleges, rating, comment }]);
+  };
 
-const addReview = (rating, comment) => {
-//   setCollegeReviews({
-//     ...collegeReviews,
-//     [collegeId]: [...(collegeReviews[collegeId] || []), review],
-//   });
+  console.log(collegeReviews);
 
-setColleges([{...colleges, rating, comment}])
+  const [colleges, setColleges] = useState([]);
 
+  useEffect(() => {
+    fetch(
+      `https://college-services-server-ashy.vercel.app/mycollege/${user?.email}`,
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server after form submission if needed
+        console.log("Form submitted successfully:", data);
+        setColleges(data);
+        setCollegeReviews(data);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during form submission
+        console.error("Error submitting form:", error);
+      });
+  }, []);
 
-
-};
-
-  console.log(collegeReviews)
-
-
-const [colleges, setColleges] = useState([]);
-
-useEffect(() => {
-  fetch(`http://localhost:5000/mycollege/${user?.email}`, {
-    method: "GET",
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      // Handle the response from the server after form submission if needed
-      console.log("Form submitted successfully:", data);
-      setColleges(data);
-      setCollegeReviews(data);
-    })
-    .catch((error) => {
-      // Handle any errors that occurred during form submission
-      console.error("Error submitting form:", error);
-    });
-}, []);
-
-console.log(colleges)
-
+  console.log(colleges);
 
   return (
     <div className="bg-gray-100 min-h-screen py-8 px-4">
@@ -91,7 +87,7 @@ console.log(colleges)
             )} */}
 
             <ul>
-              <li  className="mb-2">
+              <li className="mb-2">
                 <p>Rating: {college?.rating}</p>
                 <p>Comment: {college?.comment}</p>
               </li>
@@ -111,4 +107,3 @@ console.log(colleges)
 };
 
 export default MyCollege;
-

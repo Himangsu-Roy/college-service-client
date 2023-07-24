@@ -45,7 +45,7 @@ const Navbar = () => {
 
   return (
     <div className="relative w-full bg-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between px-4 py-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
           <span>
             {/* <svg
@@ -76,13 +76,13 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className=" items-center gap-4 md:block hidden">
-          <div className="flex gap-4 items-center">
+        <div className="items-center hidden gap-4 md:block">
+          <div className="flex items-center gap-4">
             {/* User Name */}
             {loggedIn ? (
               <div className="relative">
                 <button
-                  className="bg-white text-gray-800 border rounded-lg px-4 py-2 focus:outline-none"
+                  className="px-4 py-2 text-gray-800 bg-white border rounded-lg focus:outline-none"
                   onClick={handleDropdownToggle}>
                   {user?.displayName} {/* Replace with the actual user name */}
                   <i
@@ -93,7 +93,7 @@ const Navbar = () => {
                   </i>
                 </button>
                 {isOpen && (
-                  <div className="absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg">
+                  <div className="absolute right-0 w-40 mt-2 bg-white border rounded-lg shadow-lg">
                     <Link
                       to="/profile"
                       className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
@@ -121,16 +121,16 @@ const Navbar = () => {
 
         {/* tablet and mobile responsive */}
         <div className="lg:hidden">
-          <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
+          <Menu onClick={toggleMenu} className="w-6 h-6 cursor-pointer" />
         </div>
         {isMenuOpen && (
-          <div className="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition lg:hidden">
-            <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-              <div className="px-5 pb-6 pt-5">
+          <div className="absolute inset-x-0 top-0 z-50 p-2 transition origin-top-right transform lg:hidden">
+            <div className="bg-white divide-y-2 rounded-lg shadow-lg divide-gray-50 ring-1 ring-black ring-opacity-5">
+              <div className="px-5 pt-5 pb-6">
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center space-x-2">
                     <span>
-                      <svg
+                      {/* <svg
                         width="30"
                         height="30"
                         viewBox="0 0 50 56"
@@ -140,17 +140,17 @@ const Navbar = () => {
                           d="M23.2732 0.2528C20.8078 1.18964 2.12023 12.2346 1.08477 13.3686C0 14.552 0 14.7493 0 27.7665C0 39.6496 0.0986153 41.1289 0.83823 42.0164C2.12023 43.5449 23.2239 55.4774 24.6538 55.5267C25.9358 55.576 46.1027 44.3832 48.2229 42.4602C49.3077 41.474 49.3077 41.3261 49.3077 27.8158C49.3077 14.3055 49.3077 14.1576 48.2229 13.1714C46.6451 11.7415 27.1192 0.450027 25.64 0.104874C24.9497 -0.0923538 23.9142 0.00625992 23.2732 0.2528ZM20.2161 21.8989C20.2161 22.4906 18.9835 23.8219 17.0111 25.3997C15.2361 26.7803 13.8061 27.9637 13.8061 28.0623C13.8061 28.1116 15.2361 29.0978 16.9618 30.2319C18.6876 31.3659 20.2655 32.6479 20.4134 33.0917C20.8078 34.0286 19.871 35.2119 18.8355 35.2119C17.8001 35.2119 9.0233 29.3936 8.67815 28.5061C8.333 27.6186 9.36846 26.5338 14.3485 22.885C17.6521 20.4196 18.4904 20.0252 19.2793 20.4196C19.7724 20.7155 20.2161 21.3565 20.2161 21.8989ZM25.6893 27.6679C23.4211 34.9161 23.0267 35.7543 22.1391 34.8668C21.7447 34.4723 22.1391 32.6479 23.6677 27.9637C26.2317 20.321 26.5275 19.6307 27.2671 20.3703C27.6123 20.7155 27.1685 22.7864 25.6893 27.6679ZM36.0932 23.2302C40.6788 26.2379 41.3198 27.0269 40.3337 28.1609C39.1503 29.5909 31.6555 35.2119 30.9159 35.2119C29.9298 35.2119 28.9436 33.8806 29.2394 33.0424C29.3874 32.6479 30.9652 31.218 32.7403 29.8867L35.9946 27.4706L32.5431 25.1532C30.6201 23.9205 29.0915 22.7371 29.0915 22.5892C29.0915 21.7509 30.2256 20.4196 30.9159 20.4196C31.3597 20.4196 33.6771 21.7016 36.0932 23.2302Z"
                           fill="black"
                         />
-                      </svg>
+                      </svg> */}
                     </span>
-                    <span className="font-bold">DevUI</span>
+                    <span className="font-bold">COLLEGE BOOKING</span>
                   </div>
                   <div className="-mr-2">
                     <button
                       type="button"
                       onClick={toggleMenu}
-                      className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
+                      className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:bg-gray-100 hover:text-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
                       <span className="sr-only">Close menu</span>
-                      <X className="h-6 w-6" aria-hidden="true" />
+                      <X className="w-6 h-6" aria-hidden="true" />
                     </button>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ const Navbar = () => {
                       <Link
                         key={item.name}
                         to={item.href}
-                        className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-50">
+                        className="flex items-center p-3 -m-3 text-sm font-semibold rounded-md hover:bg-gray-50">
                         <span className="ml-3 text-base font-medium text-gray-900">
                           {item.name}
                         </span>
@@ -174,7 +174,7 @@ const Navbar = () => {
                     {loggedIn ? (
                       <div className="relative">
                         <button
-                          className="bg-white text-gray-800 border rounded-lg px-4 py-2 focus:outline-none"
+                          className="px-4 py-2 text-gray-800 bg-white border rounded-lg focus:outline-none"
                           onClick={handleDropdownToggle}>
                           User Name {/* Replace with the actual user name */}
                           <i
@@ -185,7 +185,7 @@ const Navbar = () => {
                           </i>
                         </button>
                         {isOpen && (
-                          <div className="absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg">
+                          <div className="absolute right-0 w-40 mt-2 bg-white border rounded-lg shadow-lg">
                             <Link
                               to="/profile"
                               className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
@@ -234,23 +234,23 @@ export default Navbar;
 //   };
 
 //   return (
-//     <nav className="bg-blue-500 p-4">
+//     <nav className="p-4 bg-blue-500">
 //       <div className="container mx-auto">
-//         <Link to="/" className="text-white font-bold text-xl">
+//         <Link to="/" className="text-xl font-bold text-white">
 //           College Booking
 //         </Link>
 //         <div className="flex justify-end">
 //           {loggedIn ? (
 //             <>
-//               <Link to="/profile" className="text-white mr-4">
+//               <Link to="/profile" className="mr-4 text-white">
 //                 Profile Name
 //               </Link>
-//               <button onClick={handleLogout} className="text-white font-bold">
+//               <button onClick={handleLogout} className="font-bold text-white">
 //                 Logout
 //               </button>
 //             </>
 //           ) : (
-//             <Link to="/login" className="text-white font-bold">
+//             <Link to="/login" className="font-bold text-white">
 //               Login
 //             </Link>
 //           )}

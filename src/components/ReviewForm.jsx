@@ -4,20 +4,21 @@ const ReviewForm = ({ collegeId, collegeName, addReview, collegeReviews }) => {
   const [rating, setRating] = useState("");
   const [comment, setComment] = useState("");
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     // addReview(collegeId, { rating, comment });
     addReview(rating, comment);
 
-
-    fetch(`http://localhost:5000/review/${collegeId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(review),
-    })
+    fetch(
+      `https://college-services-server-ashy.vercel.app/review/${collegeId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(review),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         // Handle the response from the server after form submission if needed
@@ -37,11 +38,9 @@ const ReviewForm = ({ collegeId, collegeName, addReview, collegeReviews }) => {
     comment,
   };
 
-  
-
   return (
     <form onSubmit={handleSubmit}>
-      <h3 key={collegeName?._id} className="text-lg font-semibold mb-2">
+      <h3 key={collegeName?._id} className="mb-2 text-lg font-semibold">
         Write a Review for {collegeName?.name}
       </h3>
       <label>
@@ -55,7 +54,7 @@ const ReviewForm = ({ collegeId, collegeName, addReview, collegeReviews }) => {
           id="rating"
           value={rating}
           onChange={(e) => setRating(e.target.value)}
-          className="w-full border rounded py-2 px-3">
+          className="w-full px-3 py-2 bg-white border rounded">
           <option value="">Select rating</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -75,7 +74,7 @@ const ReviewForm = ({ collegeId, collegeName, addReview, collegeReviews }) => {
           id="comment"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          className="w-full border rounded py-2 px-3"
+          className="w-full px-3 py-2 bg-white border rounded"
           rows="4"
         />
       </label>

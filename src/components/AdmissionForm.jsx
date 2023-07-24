@@ -5,11 +5,10 @@ import { AuthContext } from "../providers/AuthProvider";
 import { useLoaderData } from "react-router-dom";
 
 const AdmissionForm = () => {
+  const data = useLoaderData();
+  console.log(data);
 
-    const data = useLoaderData();
-    console.log(data)
-
-    const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
     candidateName: user?.displayName,
@@ -27,7 +26,7 @@ const AdmissionForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:5000/addUser`, {
+    fetch(`https://college-services-server-ashy.vercel.app/addUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,11 +64,11 @@ const AdmissionForm = () => {
 
   return (
     <div className="p-8">
-      <h2 className="text-3xl font-bold mb-6">Apply to College</h2>
+      <h2 className="mb-6 text-3xl font-bold">Apply to College</h2>
       <form
-        className="bg-white rounded-lg shadow-md p-6"
+        className="p-6 bg-white rounded-lg shadow-md"
         onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <label>
             Candidate Name
             <input
@@ -77,7 +76,7 @@ const AdmissionForm = () => {
               name="candidateName"
               value={formData.candidateName}
               onChange={handleChange}
-              className="block w-full mt-2 rounded-md border-gray-300 focus:border-teal-600 focus:ring focus:ring-teal-200 h-10"
+              className="block w-full h-10 mt-2 bg-white border-gray-300 rounded-md focus:border-teal-600 focus:ring focus:ring-teal-200"
             />
           </label>
           <label>
@@ -87,7 +86,7 @@ const AdmissionForm = () => {
               name="subject"
               value={formData.subject}
               onChange={handleChange}
-              className="block w-full mt-2 rounded-md border-gray-300 focus:border-teal-600 focus:ring focus:ring-teal-200 h-10"
+              className="block w-full h-10 mt-2 bg-white border-gray-300 rounded-md focus:border-teal-600 focus:ring focus:ring-teal-200"
             />
           </label>
           <label>
@@ -97,7 +96,7 @@ const AdmissionForm = () => {
               name="candidateEmail"
               value={formData.candidateEmail}
               onChange={handleChange}
-              className="block w-full mt-2 rounded-md border-gray-300 focus:border-teal-600 focus:ring focus:ring-teal-200 h-10"
+              className="block w-full h-10 mt-2 bg-white border-gray-300 rounded-md focus:border-teal-600 focus:ring focus:ring-teal-200"
             />
           </label>
           <label>
@@ -107,7 +106,7 @@ const AdmissionForm = () => {
               name="candidatePhone"
               value={formData.candidatePhone}
               onChange={handleChange}
-              className="block w-full mt-2 rounded-md border-gray-300 focus:border-teal-600 focus:ring focus:ring-teal-200 h-10"
+              className="block w-full h-10 mt-2 bg-white border-gray-300 rounded-md focus:border-teal-600 focus:ring focus:ring-teal-200 "
             />
           </label>
           <label>
@@ -117,7 +116,7 @@ const AdmissionForm = () => {
               name="address"
               value={formData.address}
               onChange={handleChange}
-              className="block w-full mt-2 rounded-md border-gray-300 focus:border-teal-600 focus:ring focus:ring-teal-200 h-10"
+              className="block w-full h-10 mt-2 bg-white border-gray-300 rounded-md focus:border-teal-600 focus:ring focus:ring-teal-200"
             />
           </label>
           <label>
@@ -127,7 +126,7 @@ const AdmissionForm = () => {
               name="dateOfBirth"
               value={formData.dateOfBirth}
               onChange={handleChange}
-              className="block w-full mt-2 rounded-md border-gray-300 focus:border-teal-600 focus:ring focus:ring-teal-200 h-10"
+              className="block w-full h-10 mt-2 bg-white border-teal-300 rounded-md focus:border-teal-600 focus:ring focus:ring-teal-200"
             />
           </label>
           <label>
@@ -136,14 +135,14 @@ const AdmissionForm = () => {
               accept="image/*"
               onChange={handleImageChange}
               type="file"
-              className="block mt-2 "
+              className="block mt-2"
             />
           </label>
         </div>
 
         <button
           type="submit"
-          className="bg-teal-600 text-white px-4 py-2 mt-6 rounded-md shadow-md hover:bg-teal-700 transition duration-300">
+          className="px-4 py-2 mt-6 text-white transition duration-300 bg-teal-600 rounded-md shadow-md hover:bg-teal-700">
           Submit
         </button>
       </form>
@@ -152,7 +151,3 @@ const AdmissionForm = () => {
 };
 
 export default AdmissionForm;
-
-// /mycollege/${collegeId}
-
-// ${import.meta.env.VITE_API_URL}

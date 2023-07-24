@@ -11,6 +11,7 @@ import CollegeDetails from "../components/CollegeDetails";
 import AdmissionForm from "../components/AdmissionForm";
 import Profile from "../components/Profile";
 import ForgotPassword from "../components/ForgotPassword";
+import PrivateRouter from "./PrivateRoute";
 
 // import PrivateRouter from "./PrivateRoute";
 
@@ -36,7 +37,9 @@ export const router = createBrowserRouter([
         path: "/admission/:_id",
         element: <AdmissionForm />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/colleges/${params._id}`),
+          fetch(
+            `https://college-services-server-ashy.vercel.app/colleges/${params._id}`
+          ),
       },
       {
         path: "/mycollege",
@@ -44,7 +47,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/mycollege/:id",
-        element: <MyCollege />,
+        element: (
+          <PrivateRouter>
+            <MyCollege />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/login",
@@ -56,9 +63,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "college/:_id",
-        element: <CollegeDetails />,
+        element: (
+          <PrivateRouter>
+            <CollegeDetails />
+          </PrivateRouter>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/colleges/${params._id}`),
+          fetch(
+            `https://college-services-server-ashy.vercel.app/colleges/${params._id}`
+          ),
       },
       {
         path: "profile",
