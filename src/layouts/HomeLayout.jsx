@@ -63,7 +63,7 @@ const HomeLayout = () => {
 
   return (
     <div>
-      <section className="py-24 bg-gray-100">
+      <section className="py-24 bg-gray-100 ">
         <div className="container px-4 mx-auto">
           <h2 className="mb-4 text-2xl font-semibold">
             Welcome to Our College Booking Facility

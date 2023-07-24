@@ -95,14 +95,14 @@ const Register = () => {
 
   return (
     <div>
-      <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
+      <div className="w-full max-w-sm p-6 m-auto mx-auto mt-20 bg-white rounded-lg shadow-md dark:bg-gray-800">
         <div className="flex justify-center mx-auto">
           {/* <img
             className="w-auto h-7 sm:h-8"
             src="https://merakiui.com/images/logo.svg"
             alt=""
           /> */}
-          <p className="w-auto h-7 sm:h-8 text-white">Register</p>
+          <p className="w-auto text-white h-7 sm:h-8">Register</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
@@ -121,7 +121,7 @@ const Register = () => {
               }`}
             />
             {errors.name && (
-              <p className="text-red-500 text-xs mt-1">Name is required.</p>
+              <p className="mt-1 text-xs text-red-500">Name is required.</p>
             )}
           </div>
 
@@ -140,7 +140,7 @@ const Register = () => {
               }`}
             />
             {errors.email && (
-              <p className="text-red-500 text-xs mt-1">Email is required.</p>
+              <p className="mt-1 text-xs text-red-500">Email is required.</p>
             )}
           </div>
 
@@ -167,7 +167,7 @@ const Register = () => {
                 }`}
               />
               <span
-                className="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer text-white"
+                className="absolute text-white transform -translate-y-1/2 cursor-pointer top-1/2 right-3"
                 onClick={handleTogglePassword}>
                 {showPassword ? (
                   <MdOutlineVisibility />
@@ -177,7 +177,7 @@ const Register = () => {
               </span>
             </div>
             {errors.password && (
-              <p className="text-red-500 text-xs mt-1">
+              <p className="mt-1 text-xs text-red-500">
                 Password must be at least 6 characters long and contain at least
                 one capital letter and special character.
               </p>

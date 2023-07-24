@@ -79,14 +79,14 @@ const Login = () => {
 
   return (
     <div>
-      <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
+      <div className="w-full max-w-sm p-6 m-auto mx-auto my-auto mt-20 bg-white rounded-lg shadow-md dark:bg-gray-800">
         <div className="flex justify-center mx-auto">
           {/* <img
             className="w-auto h-7 sm:h-8"
             src="https://merakiui.com/images/logo.svg"
             alt=""
           /> */}
-          <p className="w-auto h-7 sm:h-8 text-white">Login</p>
+          <p className="w-auto text-white h-7 sm:h-8">Login</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
@@ -131,7 +131,7 @@ const Login = () => {
               />
 
               <span
-                className="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer text-white"
+                className="absolute text-white transform -translate-y-1/2 cursor-pointer top-1/2 right-3"
                 onClick={handleTogglePassword}>
                 {showPassword ? (
                   <MdOutlineVisibility />
